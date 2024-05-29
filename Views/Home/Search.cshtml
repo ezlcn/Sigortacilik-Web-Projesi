@@ -1,0 +1,49 @@
+﻿@model List<Sigortaci.Models.Campaign>
+@{
+    ViewBag.Title = "Search";
+    Layout = "~/Views/Shared/_LayoutClient.cshtml";
+}
+
+
+<div class="service">
+    <div class="container">
+        @{
+            if (Model != null && Model.Count() > 0)
+            {
+                <div class="section-header text-center">Arama Terimi : @TempData["Search"] @Model.Count() adet sonuç bulundu.</div>
+            }
+            else
+            {
+                <div class="section-header text-center">Arama Terimi : @TempData["Search"] - Sonuç bulunamadı farklı terimler ile tekrar deneyin</div>
+            }
+        }
+
+        <div class="row">
+            @{
+                if (Model != null && Model.Count() > 0)
+                {
+                    foreach (var item in Model)
+                    {
+                        <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.1s">
+                            <div class="service-item">
+                                <div class="service-img">
+                                    <img src="~/img/@item.ImgLink" />
+                                    <div class="service-overlay">
+                                        <p>
+                                            @item.ShortDesc
+                                        </p>
+                                    </div>
+                                </div>
+                                <div class="service-text">
+                                    <h3>@item.Name</h3>
+                                    <a class="btn" href="/Home/CampaignDetail/@item.Id" data-lightbox="service">+</a>
+                                </div>
+                            </div>
+                        </div>
+                    }
+                }
+            }
+
+        </div>
+    </div>
+</div>

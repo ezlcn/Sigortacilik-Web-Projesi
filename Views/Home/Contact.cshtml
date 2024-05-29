@@ -1,0 +1,73 @@
+﻿
+@{
+    ViewBag.Title = "Contact";
+    Layout = "~/Views/Shared/_LayoutClient.cshtml";
+}
+
+
+<div class="contact wow fadeInUp">
+    <div class="container">
+        <div class="section-header text-center">
+            <h2>Bize Ulaşın</h2>
+        </div>
+        <div class="row">
+            <div class="col-md-6">
+                <div class="contact-info">
+                    <div class="contact-item">
+                        <i class="flaticon-address"></i>
+                        <div class="contact-text">
+                            <h2>Adres</h2>
+                            <p>
+                                Bahçelievler Mahallesi 100.yıl Bulvarı no:275 Huzur Sitesi
+                                A2 Blok İLKADIM/SAMSUN
+                            </p>
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <i class="flaticon-call"></i>
+                        <div class="contact-text">
+                            <h2>İletişim Numarası</h2>
+                            <p>0362 230 51 00</p>
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <i class="flaticon-send-mail"></i>
+                        <div class="contact-text">
+                            <h2>Email</h2>
+                            <p>pinarbayraktarbilgin@hotmail.com</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="contact-form">
+                    <div style="color:green" id="success">@TempData["success"]</div>
+                    <div style="color:red" id="error">@TempData["error"]</div>
+                    <form name="sentMessage" id="contactForm" method="post" action="/Home/SendMessage">
+                        <div class="control-group">
+                            <input type="text" name="Name" class="form-control" id="ad" placeholder="Adınız" required="required" data-validation-required-message="İsim girin">
+                            <span asp-validation-for="Name" class="help-block text-danger"></span>
+                        </div>
+                        <div class="control-group">
+                            <input type="email" name="MailAdress" class="form-control" id="email" placeholder="Email Adresiniz" required="required" data-validation-required-message="Mail adresinizi girin">
+                            <span asp-validation-for="MailAdress" class="help-block text-danger"></span>
+                        </div>
+                        <div class="control-group">
+                            <input name="Subject" type="text" class="form-control" id="konu" placeholder="Konu" required="required" data-validation-required-message="Konu girin">
+                            <span asp-validation-for="Subject" class="help-block text-danger"></span>
+                        </div>
+                        <div class="control-group">
+                            <textarea class="form-control" name="Body" id="mesaj" placeholder="Mesajınız..." required="required" data-validation-required-message="Mesajınızı girin"></textarea>
+                            <span asp-validation-for="Body" class="help-block text-danger"></span>
+                        </div>
+                        <div>
+                            <button class="btn" type="submit" id="sendMessageButton">
+                                Gönder
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

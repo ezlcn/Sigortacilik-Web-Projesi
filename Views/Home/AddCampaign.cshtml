@@ -1,0 +1,79 @@
+﻿@model List<Sigortaci.Models.Campaign>
+@{
+    ViewBag.Title = "AddCampaign";
+}
+<div class="row">
+    <div class="col-md-4">
+        <form class="form-horizontal" action="/Home/AddCampaign" method="post" enctype="multipart/form-data">
+            <div class="form-group">
+                <label class="control-label col-sm-2">Kampanya Adı:</label>
+                <div class="col-sm-10">
+                    <input type="text" class="form-control" name="Name">
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="control-label col-sm-2">Kampanya Resim:</label>
+                <div class="col-sm-10">
+                    <input type="file" id="myFile" name="file">
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="control-label col-sm-2">Kısa Açıklama:</label>
+                <div class="col-sm-10">
+                    <textarea style="
+    width: 100%;
+" name="ShortDesc" id="summernote"></textarea>
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="control-label col-sm-2">İçerik:</label>
+                <div class="col-sm-10">
+                    <textarea style="
+    width: 100%;
+" name="Desc" id="summernote"></textarea>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <div class="submit_wrap">
+                    <button type="submit" class="btn btn-success">Kaydet</button>
+                </div>
+                <div class="submit_wrap">
+                    <p class="text"></p>
+                </div>
+            </div>
+        </form>
+    </div>
+    <div class="col-md-8">
+        <div class="container">
+            <h2>Aktif Servisler</h2>
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>Başlık</th>
+                        <th>-</th>
+                        <th>-</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @{
+                        if (Model != null && Model.Count() > 0)
+                        {
+                            foreach (var item in Model)
+                            {
+                                <tr>
+                                    <td>@item.Name</td>
+                                    <td><a class="btn btn-danger" href="/Home/DeleteCampaign/@item.Id">Sil</a> </td>
+                                    <td><a class="btn btn-primary" href="/Home/UpdateCampaign/@item.Id">Düzenle</a> </td>
+                                </tr>
+                            }
+                        }
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+
+
